@@ -1,0 +1,54 @@
+name: Update F1 Data
+
+on:
+  schedule:
+    # Run every 2 hours on race weekends (Fri-Sun)
+    - cron: '0 */2 * * 5-0'
+    # Run daily on weekdays
+    - cron: '0 8 * * 1-4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest F1 data
+        run: |
+          # Fetch race results
+          curl -s "https://api.jolpi.ca/ergast/f1/2026/results.json?limit=1000" -o /tmp/results.json || true
+          curl -s "https://api.jolpi.ca/ergast/f1/2026/sprint.json?limit=1000" -o /tmp/sprint.json || true
+          curl -s "https://api.jolpi.ca/ergast/f1/2026/qualifying.json?limit=1000" -o /tmp/qualifying.json || true
+          curl -s "https://api.jolpi.ca/ergast/f1/2026/driverStandings.json" -o /tmp/driverStandings.json || true
+          curl -s "https://api.jolpi.ca/ergast/f1/2026/constructorStandings.json" -o /tmp/constructorStandings.json || true
+          echo "Data fetched at $(date -u)"
+
+      - name: Process and update data
+        run: |
+          node -e "
+          const fs = require('fs');
+          const results = {};
+          
+          try { results.races = JSON.parse(fs.readFileSync('/tmp/results.json', 'utf8')); } catch(e) { console.log('No race data'); }
+          try { results.sprint = JSON.parse(fs.readFileSync('/tmp/sprint.json', 'utf8')); } catch(e) { console.log('No sprint data'); }
+          try { results.qualifying = JSON.parse(fs.readFileSync('/tmp/qualifying.json', 'utf8')); } catch(e) { console.log('No qualifying data'); }
+          try { results.wdc = JSON.parse(fs.readFileSync('/tmp/driverStandings.json', 'utf8')); } catch(e) { console.log('No WDC data'); }
+          try { results.wcc = JSON.parse(fs.readFileSync('/tmp/constructorStandings.json', 'utf8')); } catch(e) { console.log('No WCC data'); }
+          
+          results.lastUpdated = new Date().toISOString();
+          
+          fs.writeFileSync('js/api-cache.json', JSON.stringify(results, null, 2));
+          console.log('Cache file updated');
+          "
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add js/api-cache.json
+          git diff --staged --quiet || (git commit -m "Auto-update F1 data $(date -u +%Y-%m-%d)" && git push)
