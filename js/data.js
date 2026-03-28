@@ -113,6 +113,8 @@ const F1Data = {
       color: '#3671C6',
       drivers: ['Perez', 'Piastri', 'Russell', 'Verstappen', 'Leclerc', 'Antonelli'],
       joker: 'Perez',
+      // Drivers excluded from specific race indices (not picked for that race)
+      driverExclusions: { 'Antonelli': [0] },
       driverPoints: {
         'Perez':      [0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
         'Piastri':    ['DNF', 3, 'DNS', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],

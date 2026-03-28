@@ -14,9 +14,10 @@ function formatPoints(val) {
 function getDriverTotal(player, driverName) {
   const pts = player.driverPoints[driverName];
   if (!pts) return 0;
+  const exclusions = player.driverExclusions ? (player.driverExclusions[driverName] || []) : [];
   return pts.reduce((sum, v, i) => {
-    // Skip cancelled races
     if (F1Data.races[i] && F1Data.races[i].cancelled) return sum;
+    if (exclusions.includes(i)) return sum;
     if (typeof v === 'number') return sum + v;
     return sum;
   }, 0);
@@ -184,12 +185,13 @@ function buildPlayerCard(player, total) {
     let cells = `<td class="sticky-col"><span class="team-color-bar" style="background:${teamColor}"></span>${driverName}${jkrTag}</td>`;
 
     const pts = player.driverPoints[driverName] || [];
+    const exclusions = player.driverExclusions ? (player.driverExclusions[driverName] || []) : [];
     for (let i = 0; i < numEvents; i++) {
       const val = i < pts.length ? pts[i] : null;
       const sprintClass = races[i].type === 'sprint' ? ' sprint-col' : '';
       const cancelledClass = races[i].cancelled ? ' cancelled-col' : '';
-      if (isJoker) {
-        // JKR driver: show value struck-through but it doesn't count
+      const isExcluded = exclusions.includes(i);
+      if (isJoker || isExcluded) {
         const display = val !== null && val !== undefined ? `<s>${formatPoints(val)}</s>` : '—';
         cells += `<td class="cell-null${sprintClass}${cancelledClass}">${display}</td>`;
       } else {
@@ -233,6 +235,8 @@ function buildPlayerCard(player, total) {
     let hasAny = false;
     player.drivers.forEach(d => {
       if (d === player.joker) return;
+      const excl = player.driverExclusions ? (player.driverExclusions[d] || []) : [];
+      if (excl.includes(i)) return;
       const pts = player.driverPoints[d];
       const val = pts ? pts[i] : null;
       if (typeof val === 'number') { eventTotal += val; hasAny = true; }
