@@ -161,6 +161,36 @@ const F1Data = {
   // Actual race results - actual pole times in seconds
   actualPoleTimes: [78.518, 91.520, 92.064, 88.778, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 
+  // Latest qualifying results (fallback when Jolpica API lags behind)
+  latestQualifying: {
+    sessionName: 'Japanese Grand Prix',
+    round: '3',
+    entries: [
+      { pos: 1,  code: 'ANT', familyName: 'Antonelli',  constructorName: 'Mercedes',     time: '1:28.778' },
+      { pos: 2,  code: 'RUS', familyName: 'Russell',     constructorName: 'Mercedes',     time: '1:29.076' },
+      { pos: 3,  code: 'PIA', familyName: 'Piastri',     constructorName: 'McLaren',      time: '1:29.132' },
+      { pos: 4,  code: 'LEC', familyName: 'Leclerc',     constructorName: 'Ferrari',      time: '1:29.405' },
+      { pos: 5,  code: 'NOR', familyName: 'Norris',      constructorName: 'McLaren',      time: '1:29.409' },
+      { pos: 6,  code: 'HAM', familyName: 'Hamilton',    constructorName: 'Ferrari',      time: '1:29.567' },
+      { pos: 7,  code: 'GAS', familyName: 'Gasly',       constructorName: 'Alpine',       time: '1:29.691' },
+      { pos: 8,  code: 'HAD', familyName: 'Hadjar',      constructorName: 'Red Bull',     time: '1:29.978' },
+      { pos: 9,  code: 'BOR', familyName: 'Bortoleto',   constructorName: 'Audi',         time: '1:30.274' },
+      { pos: 10, code: 'LIN', familyName: 'Lindblad',    constructorName: 'Racing Bulls',  time: '1:30.319' },
+      { pos: 11, code: 'VER', familyName: 'Verstappen',  constructorName: 'Red Bull',     time: '1:30.262' },
+      { pos: 12, code: 'OCO', familyName: 'Ocon',        constructorName: 'Haas',         time: '1:30.309' },
+      { pos: 13, code: 'HUL', familyName: 'Hulkenberg',  constructorName: 'Audi',         time: '1:30.370' },
+      { pos: 14, code: 'LAW', familyName: 'Lawson',      constructorName: 'Racing Bulls',  time: '1:30.374' },
+      { pos: 15, code: 'COL', familyName: 'Colapinto',   constructorName: 'Alpine',       time: '1:30.491' },
+      { pos: 16, code: 'SAI', familyName: 'Sainz',       constructorName: 'Williams',     time: '1:30.510' },
+      { pos: 17, code: 'ALB', familyName: 'Albon',       constructorName: 'Williams',     time: '1:30.644' },
+      { pos: 18, code: 'BEA', familyName: 'Bearman',     constructorName: 'Haas',         time: '1:30.875' },
+      { pos: 19, code: 'PER', familyName: 'Perez',       constructorName: 'Cadillac',     time: '1:31.102' },
+      { pos: 20, code: 'BOT', familyName: 'Bottas',      constructorName: 'Cadillac',     time: '1:31.245' },
+      { pos: 21, code: 'ALO', familyName: 'Alonso',      constructorName: 'Aston Martin', time: '1:31.388' },
+      { pos: 22, code: 'STR', familyName: 'Stroll',      constructorName: 'Aston Martin', time: '1:31.512' }
+    ]
+  },
+
   // Actual podium results per event [P1, P2, P3]
   actualPodiums: [
     ['Russell', 'Antonelli', 'Hamilton'],

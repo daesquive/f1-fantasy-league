@@ -820,7 +820,7 @@ async function renderLiveTiming() {
   // Check cache
   const CACHE_KEY = 'f1-timing-cache';
   const CACHE_TIME_KEY = 'f1-timing-cache-time';
-  const CACHE_DURATION = 30 * 60 * 1000;
+  const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
 
   const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
   const cachedData = localStorage.getItem(CACHE_KEY);
@@ -859,13 +859,27 @@ async function renderLiveTiming() {
               };
             })
           };
-          localStorage.setItem(CACHE_KEY, JSON.stringify(timingData));
-          localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
         }
       }
     } catch (e) {
       console.warn('[Timing] Could not fetch qualifying data:', e.message);
     }
+  }
+
+  // Use hardcoded latestQualifying if it's newer than what the API returned
+  if (F1Data.latestQualifying) {
+    const lq = F1Data.latestQualifying;
+    const lqRound = parseInt(lq.round, 10);
+    const apiRound = timingData ? parseInt(timingData.round, 10) : 0;
+    if (lqRound > apiRound || (lqRound === apiRound && timingData && timingData.entries.every(e => !e.time))) {
+      timingData = lq;
+    }
+  }
+
+  // Cache the result
+  if (timingData) {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(timingData));
+    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
   }
 
   // Build entries from qualifying data or fall back to WDC
