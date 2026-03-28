@@ -105,7 +105,7 @@ const F1Data = {
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
       ],
       // Pole time predictions in seconds (mm:ss.sss → total seconds)
-      polePredictions: [76.800, 93.400, 90.900, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+      polePredictions: [76.800, 93.400, 90.900, 87.271, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
     },
     {
       name: 'Daniel',
@@ -129,7 +129,7 @@ const F1Data = {
         ['Russell', 'Leclerc', 'Antonelli'],
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
       ],
-      polePredictions: [78.720, 92.723, 91.237, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+      polePredictions: [78.720, 92.723, 91.237, 87.27, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
     },
     {
       name: 'Roger',
@@ -153,7 +153,7 @@ const F1Data = {
         ['Russell', 'Antonelli', 'Leclerc'],
         null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
       ],
-      polePredictions: [78.300, 93.228, 90.108, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+      polePredictions: [78.300, 93.228, 90.108, 87.7, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
     }
   ],
 
