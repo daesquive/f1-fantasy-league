@@ -26,22 +26,21 @@ const F1Data = {
     'Norris':     { num: 1,  code: 'NOR', team: 'McLaren', firstName: 'Lando', country: 'GB' },
     'Piastri':    { num: 81, code: 'PIA', team: 'McLaren', firstName: 'Oscar', country: 'AU' },
     'Verstappen': { num: 3,  code: 'VER', team: 'Red Bull', firstName: 'Max', country: 'NL' },
-    'Lawson':     { num: 22, code: 'LAW', team: 'Red Bull', firstName: 'Liam', country: 'NZ' },
+    'Hadjar':     { num: 6,  code: 'HAD', team: 'Red Bull', firstName: 'Isack', country: 'FR' },
     'Alonso':     { num: 14, code: 'ALO', team: 'Aston Martin', firstName: 'Fernando', country: 'ES' },
     'Stroll':     { num: 18, code: 'STR', team: 'Aston Martin', firstName: 'Lance', country: 'CA' },
+    'Colapinto':  { num: 43, code: 'COL', team: 'Alpine', firstName: 'Franco', country: 'AR' },
     'Gasly':      { num: 10, code: 'GAS', team: 'Alpine', firstName: 'Pierre', country: 'FR' },
-    'Ocon':       { num: 31, code: 'OCO', team: 'Alpine', firstName: 'Esteban', country: 'FR' },
     'Albon':      { num: 23, code: 'ALB', team: 'Williams', firstName: 'Alexander', country: 'TH' },
     'Sainz':      { num: 55, code: 'SAI', team: 'Williams', firstName: 'Carlos', country: 'ES' },
-    'Hadjar':     { num: 6,  code: 'HAD', team: 'Racing Bulls', firstName: 'Isack', country: 'FR' },
-
-    'Hulkenberg': { num: 27, code: 'HUL', team: 'Haas', firstName: 'Nico', country: 'DE', altName: 'Hülkenberg' },
+    'Lindblad':   { num: 41, code: 'LIN', team: 'Racing Bulls', firstName: 'Arvid', country: 'GB' },
+    'Lawson':     { num: 22, code: 'LAW', team: 'Racing Bulls', firstName: 'Liam', country: 'NZ' },
+    'Ocon':       { num: 31, code: 'OCO', team: 'Haas', firstName: 'Esteban', country: 'FR' },
     'Bearman':    { num: 87, code: 'BEA', team: 'Haas', firstName: 'Oliver', country: 'GB' },
+    'Hulkenberg': { num: 27, code: 'HUL', team: 'Audi', firstName: 'Nico', country: 'DE', altName: 'Hülkenberg' },
     'Bortoleto':  { num: 5,  code: 'BOR', team: 'Audi', firstName: 'Gabriel', country: 'BR' },
-    'Bottas':     { num: 77, code: 'BOT', team: 'Audi', firstName: 'Valtteri', country: 'FI' },
-    'Colapinto':  { num: 43, code: 'COL', team: 'Cadillac', firstName: 'Franco', country: 'AR' },
-    'Perez':      { num: 11, code: 'PER', team: 'Red Bull', firstName: 'Sergio', country: 'MX', altName: 'Pérez' },
-    'Lindblad':   { num: 41, code: 'LIN', team: 'Racing Bulls', firstName: 'Arvid', country: 'GB' }
+    'Perez':      { num: 11, code: 'PER', team: 'Cadillac', firstName: 'Sergio', country: 'MX', altName: 'Pérez' },
+    'Bottas':     { num: 77, code: 'BOT', team: 'Cadillac', firstName: 'Valtteri', country: 'FI' }
   },
 
   // Race calendar - events in order
