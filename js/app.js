@@ -836,11 +836,18 @@ async function renderLiveTiming() {
         const data = await resp.json();
         const races = data?.MRData?.RaceTable?.Races;
         if (races && races.length > 0) {
-          const lastRace = races[races.length - 1];
-          const results = lastRace.QualifyingResults || [];
+          // Find latest race that has actual qualifying times
+          let targetRace = null;
+          for (let ri = races.length - 1; ri >= 0; ri--) {
+            const qr = races[ri].QualifyingResults || [];
+            const hasTime = qr.some(r => r.Q3 || r.Q2 || r.Q1);
+            if (hasTime) { targetRace = races[ri]; break; }
+          }
+          if (!targetRace) targetRace = races[races.length - 1];
+          const results = targetRace.QualifyingResults || [];
           timingData = {
-            sessionName: lastRace.raceName || 'Qualifying',
-            round: lastRace.round,
+            sessionName: targetRace.raceName || 'Qualifying',
+            round: targetRace.round,
             entries: results.map(r => {
               const bestTime = r.Q3 || r.Q2 || r.Q1 || '';
               return {
