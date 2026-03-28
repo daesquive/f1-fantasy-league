@@ -159,7 +159,7 @@ const F1Data = {
   ],
 
   // Actual race results - actual pole times in seconds
-  actualPoleTimes: [78.518, 91.520, 92.064, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  actualPoleTimes: [78.518, 91.520, 92.064, 88.778, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 
   // Actual podium results per event [P1, P2, P3]
   actualPodiums: [
