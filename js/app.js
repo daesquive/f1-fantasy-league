@@ -829,6 +829,17 @@ async function renderLiveTiming() {
     try { timingData = JSON.parse(cachedData); } catch (e) { /* ignore */ }
   }
 
+  // Always check if hardcoded data is newer than cache/API
+  if (F1Data.latestQualifying && timingData) {
+    const lqRound = parseInt(F1Data.latestQualifying.round, 10);
+    const curRound = parseInt(timingData.round, 10);
+    if (lqRound > curRound) {
+      timingData = F1Data.latestQualifying;
+      localStorage.setItem(CACHE_KEY, JSON.stringify(timingData));
+      localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+    }
+  }
+
   if (!timingData) {
     try {
       const resp = await fetch(`https://api.jolpi.ca/ergast/f1/${F1Data.season}/qualifying.json?limit=1000`);
