@@ -986,7 +986,7 @@ async function renderF1Video() {
 
   const CACHE_KEY = 'f1-video-cache';
   const CACHE_TIME_KEY = 'f1-video-cache-time';
-  const CACHE_DURATION = 6 * 60 * 60 * 1000; // 6 hours
+  const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
 
   let videoId = null;
   let videoTitle = '';
