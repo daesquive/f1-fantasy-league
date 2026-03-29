@@ -1090,23 +1090,28 @@ function init() {
   renderAll();
 
   // Initialize Firebase sync: load shared predictions and listen for real-time updates
-  if (typeof FirebaseSync !== 'undefined' && FirebaseSync.isConfigured()) {
-    // Migrate any local-only predictions to Firebase (one-time)
-    FirebaseSync.migrateFromLocalStorage();
+  if (typeof FirebaseSync !== 'undefined') {
+    if (FirebaseSync.isConfigured()) {
+      // Migrate any local-only predictions to Firebase (one-time)
+      FirebaseSync.migrateFromLocalStorage();
 
-    // Listen for real-time prediction updates from all players
-    FirebaseSync.onUpdate((allPredictions) => {
-      // Merge Firebase data into localStorage for offline fallback
-      try {
-        const local = loadPredictions();
-        const merged = Object.assign({}, local, allPredictions);
-        localStorage.setItem('f1-predictions', JSON.stringify(merged));
-      } catch (e) { /* ignore */ }
+      // Listen for real-time prediction updates from all players
+      FirebaseSync.onUpdate((allPredictions) => {
+        // Merge Firebase data into localStorage for offline fallback
+        try {
+          const local = loadPredictions();
+          const merged = Object.assign({}, local, allPredictions);
+          localStorage.setItem('f1-predictions', JSON.stringify(merged));
+        } catch (e) { /* ignore */ }
 
-      // Re-merge and re-render with shared predictions
-      mergePredictionsFromData(allPredictions);
-      renderAll();
-    });
+        // Re-merge and re-render with shared predictions
+        mergePredictionsFromData(allPredictions);
+        renderAll();
+      });
+    } else {
+      // Show setup banner prompting admin to connect Firebase
+      FirebaseSync.showSetupBanner();
+    }
   }
 
   // FAB button for adding predictions
