@@ -61,6 +61,7 @@ f1-fantasy-league/
 │   ├── data.js                         # Player data, predictions, race calendar
 │   ├── app.js                          # Rendering & interaction logic
 │   ├── api.js                          # F1 API integration & caching
+│   ├── firebase-sync.js               # Firebase prediction sync (shared storage)
 │   └── api-cache.json                  # Cached API responses
 ├── .github/
 │   └── workflows/
@@ -68,9 +69,59 @@ f1-fantasy-league/
 └── README.md
 ```
 
+## Shared Predictions Setup (Firebase)
+
+Predictions entered via the **+** button are shared across all players in real-time using Firebase Realtime Database. Without Firebase configured, predictions only save locally in each browser.
+
+### Quick Setup (5 minutes)
+
+1. Go to [Firebase Console](https://console.firebase.google.com/) and click **Add project**
+2. Name it (e.g. `f1-fantasy-league`) → disable Google Analytics → **Create Project**
+3. In the project dashboard, click the **</>** (Web) icon to add a web app
+4. Register the app (any name) → copy the `firebaseConfig` object shown
+5. Go to **Build → Realtime Database → Create Database**
+6. Choose a location → select **Start in test mode** → **Enable**
+7. Open `js/firebase-sync.js` and replace the placeholder config:
+
+```js
+const FIREBASE_CONFIG = {
+  apiKey:            "AIzaSy...",          // from step 4
+  authDomain:        "f1-fantasy.firebaseapp.com",
+  databaseURL:       "https://f1-fantasy-default-rtdb.firebaseio.com",
+  projectId:         "f1-fantasy",
+  storageBucket:     "f1-fantasy.appspot.com",
+  messagingSenderId: "123456789",
+  appId:             "1:123456789:web:abc123"
+};
+```
+
+8. **Set security rules** — in the Firebase Console go to **Realtime Database → Rules** and set:
+
+```json
+{
+  "rules": {
+    "predictions": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
+```
+
+> ⚠️ Test mode rules expire after 30 days. Use the rules above to keep predictions readable/writable permanently. For a private league, consider adding Firebase Authentication.
+
+9. Deploy your changes to GitHub Pages — predictions will now sync across all players!
+
+### How It Works
+
+- When a player saves a prediction, it's written to both **localStorage** (offline fallback) and **Firebase** (shared)
+- On page load, the app loads predictions from Firebase and merges them with local data
+- **Real-time sync**: when any player saves a prediction, all other open browsers update automatically
+- If Firebase is not configured, the app falls back to localStorage-only mode (current behavior)
+
 ## Editing Predictions
 
-**Via the UI:** Click the red **+** button (bottom-right) to open the prediction form.
+**Via the UI:** Click the red **+** button (bottom-right) to open the prediction form. Predictions are automatically synced to all players via Firebase.
 
 **Via code:** Edit `js/data.js` — update the `podiumPredictions` and `polePredictions` arrays for each player.
 

@@ -592,13 +592,16 @@ function savePrediction() {
     poleTime: poleSeconds
   };
 
-  // Load existing predictions from localStorage
+  // Save to localStorage (offline fallback)
   let stored = loadPredictions();
-  // Use a key like "playerName-raceIndex"
   const key = `${playerName}-${raceIdx}`;
   stored[key] = prediction;
-
   localStorage.setItem('f1-predictions', JSON.stringify(stored));
+
+  // Save to Firebase (shared across all players)
+  if (typeof FirebaseSync !== 'undefined' && FirebaseSync.isConfigured()) {
+    FirebaseSync.savePrediction(playerName, raceIdx, prediction);
+  }
 
   // Merge with F1Data
   mergePredictions();
@@ -619,6 +622,12 @@ function loadPredictions() {
 
 function mergePredictions() {
   const stored = loadPredictions();
+  mergePredictionsFromData(stored);
+}
+
+// Merge prediction data (from localStorage or Firebase) into F1Data
+function mergePredictionsFromData(stored) {
+  if (!stored) return;
 
   Object.values(stored).forEach(pred => {
     const player = F1Data.players.find(p => p.name === pred.player);
@@ -1074,11 +1083,31 @@ function renderAll() {
 }
 
 function init() {
-  // Load and merge localStorage predictions
+  // Load and merge localStorage predictions (immediate, offline-first)
   mergePredictions();
 
   // Render all sections
   renderAll();
+
+  // Initialize Firebase sync: load shared predictions and listen for real-time updates
+  if (typeof FirebaseSync !== 'undefined' && FirebaseSync.isConfigured()) {
+    // Migrate any local-only predictions to Firebase (one-time)
+    FirebaseSync.migrateFromLocalStorage();
+
+    // Listen for real-time prediction updates from all players
+    FirebaseSync.onUpdate((allPredictions) => {
+      // Merge Firebase data into localStorage for offline fallback
+      try {
+        const local = loadPredictions();
+        const merged = Object.assign({}, local, allPredictions);
+        localStorage.setItem('f1-predictions', JSON.stringify(merged));
+      } catch (e) { /* ignore */ }
+
+      // Re-merge and re-render with shared predictions
+      mergePredictionsFromData(allPredictions);
+      renderAll();
+    });
+  }
 
   // FAB button for adding predictions
   const fab = document.getElementById('prediction-fab');
