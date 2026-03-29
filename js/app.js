@@ -11,6 +11,27 @@ function formatPoints(val) {
   return String(val);
 }
 
+// Check if a driver is the joker for a specific race (handles joker swaps)
+function isDriverJokerForRace(player, driverName, raceIndex) {
+  const race = F1Data.races[raceIndex];
+  if (player.jokerSwap) {
+    if (race.date < player.jokerSwap.effectiveDate) {
+      return driverName === player.joker;
+    } else {
+      return driverName === player.jokerSwap.newJoker;
+    }
+  }
+  return driverName === player.joker;
+}
+
+// Check if a driver is the current/display joker (for row-level labels)
+function isCurrentJoker(player, driverName) {
+  if (player.jokerSwap) {
+    return driverName === player.jokerSwap.newJoker;
+  }
+  return driverName === player.joker;
+}
+
 function getDriverTotal(player, driverName) {
   const pts = player.driverPoints[driverName];
   if (!pts) return 0;
@@ -18,6 +39,7 @@ function getDriverTotal(player, driverName) {
   return pts.reduce((sum, v, i) => {
     if (F1Data.races[i] && F1Data.races[i].cancelled) return sum;
     if (exclusions.includes(i)) return sum;
+    if (isDriverJokerForRace(player, driverName, i)) return sum;
     if (typeof v === 'number') return sum + v;
     return sum;
   }, 0);
@@ -57,9 +79,8 @@ function calculatePlayerTotal(player) {
   let total = 0;
   const playerIndex = F1Data.players.indexOf(player);
 
-  // Sum driver points (exclude joker)
+  // Sum driver points (joker exclusion handled per-race in getDriverTotal)
   for (const driverName of player.drivers) {
-    if (driverName === player.joker) continue;
     total += getDriverTotal(player, driverName);
   }
 
@@ -176,11 +197,12 @@ function buildPlayerCard(player, total) {
   // Driver rows
   let driverRows = '';
   player.drivers.forEach(driverName => {
-    const isJoker = driverName === player.joker;
+    const isFullJoker = !player.jokerSwap && driverName === player.joker;
+    const isSwapJoker = player.jokerSwap && isCurrentJoker(player, driverName);
     const teamColor = F1Data.getTeamColor(driverName);
-    const driverTotal = isJoker ? '—' : getDriverTotal(player, driverName);
-    const rowClass = isJoker ? 'joker-driver' : '';
-    const jkrTag = isJoker ? ' <span class="jkr-tag">(JKR)</span>' : '';
+    const driverTotal = isFullJoker ? '—' : getDriverTotal(player, driverName);
+    const rowClass = isFullJoker ? 'joker-driver' : '';
+    const jkrTag = (isFullJoker || isSwapJoker) ? ' <span class="jkr-tag">(JKR)</span>' : '';
 
     let cells = `<td class="sticky-col"><span class="team-color-bar" style="background:${teamColor}"></span>${driverName}${jkrTag}</td>`;
 
@@ -191,7 +213,7 @@ function buildPlayerCard(player, total) {
       const sprintClass = races[i].type === 'sprint' ? ' sprint-col' : '';
       const cancelledClass = races[i].cancelled ? ' cancelled-col' : '';
       const isExcluded = exclusions.includes(i);
-      if (isJoker || isExcluded) {
+      if (isFullJoker || isDriverJokerForRace(player, driverName, i) || isExcluded) {
         const display = val !== null && val !== undefined ? `<s>${formatPoints(val)}</s>` : '—';
         cells += `<td class="cell-null${sprintClass}${cancelledClass}">${display}</td>`;
       } else {
@@ -234,7 +256,7 @@ function buildPlayerCard(player, total) {
     let eventTotal = 0;
     let hasAny = false;
     player.drivers.forEach(d => {
-      if (d === player.joker) return;
+      if (isDriverJokerForRace(player, d, i)) return;
       const excl = player.driverExclusions ? (player.driverExclusions[d] || []) : [];
       if (excl.includes(i)) return;
       const pts = player.driverPoints[d];

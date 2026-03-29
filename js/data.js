@@ -85,6 +85,7 @@ const F1Data = {
       color: '#E8002D',
       drivers: ['Hadjar', 'Hamilton', 'Norris', 'Russell', 'Gasly', 'Piastri'],
       joker: 'Piastri',
+      jokerSwap: { newJoker: 'Gasly', effectiveDate: '2026-03-29' },
       // Points per event (index matches races array)
       driverPoints: {
         'Hadjar':   ['DNF', 0, 4, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
