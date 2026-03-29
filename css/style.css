@@ -1277,6 +1277,11 @@ td.cell-empty {
   opacity: 0.45;
 }
 
+.joker-name {
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+
 /* Predictions section */
 .predictions-section {
   padding: 1rem 1.5rem;

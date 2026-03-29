@@ -204,7 +204,7 @@ function buildPlayerCard(player, total) {
     const rowClass = isFullJoker ? 'joker-driver' : '';
     const jkrTag = (isFullJoker || isSwapJoker) ? ' <span class="jkr-tag">(JKR)</span>' : '';
 
-    let cells = `<td class="sticky-col"><span class="team-color-bar" style="background:${teamColor}"></span>${driverName}${jkrTag}</td>`;
+    let cells = `<td class="sticky-col${isSwapJoker ? ' joker-name' : ''}"><span class="team-color-bar" style="background:${teamColor}"></span>${driverName}${jkrTag}</td>`;
 
     const pts = player.driverPoints[driverName] || [];
     const exclusions = player.driverExclusions ? (player.driverExclusions[driverName] || []) : [];
