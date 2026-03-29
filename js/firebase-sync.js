@@ -91,7 +91,7 @@ const FirebaseSync = (() => {
     db.ref(DB_PATH).off('value');
   }
 
-  // Migrate localStorage predictions to Firebase (one-time)
+  // Merge localStorage predictions into Firebase (each player's local data is pushed)
   async function migrateFromLocalStorage() {
     if (!init()) return;
     try {
@@ -100,13 +100,13 @@ const FirebaseSync = (() => {
       const stored = JSON.parse(raw);
       if (!stored || Object.keys(stored).length === 0) return;
 
-      // Only migrate if Firebase is empty
-      const existing = await loadAll();
-      if (existing && Object.keys(existing).length > 0) return;
-
-      // Push all local predictions to Firebase
-      await db.ref(DB_PATH).set(stored);
-      console.log('[FirebaseSync] Migrated localStorage predictions to Firebase');
+      // Merge: write each local prediction into Firebase without overwriting others
+      const updates = {};
+      for (const [key, value] of Object.entries(stored)) {
+        updates[key] = value;
+      }
+      await db.ref(DB_PATH).update(updates);
+      console.log('[FirebaseSync] Merged localStorage predictions into Firebase');
     } catch (err) {
       console.warn('[FirebaseSync] Migration failed:', err);
     }
