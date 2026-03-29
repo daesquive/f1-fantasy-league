@@ -927,6 +927,84 @@ td.cell-empty {
   margin: 0 auto;
 }
 
+/* Race Countdown */
+.race-countdown {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(225, 6, 0, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.race-countdown:empty {
+  display: none;
+}
+
+.countdown-label {
+  color: #9CA3AF;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.7rem;
+}
+
+.countdown-location {
+  color: #E10600;
+  font-weight: 700;
+}
+
+.countdown-digits {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 2.2rem;
+}
+
+.countdown-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.countdown-lbl {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  color: #6B7280;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.countdown-sep {
+  color: #E10600;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  align-self: flex-start;
+}
+
+@media (max-width: 600px) {
+  .race-countdown {
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  .countdown-val { font-size: 0.95rem; }
+  .countdown-unit { min-width: 1.8rem; }
+}
+
 .f1-logo {
   margin-bottom: 0.75rem;
 }

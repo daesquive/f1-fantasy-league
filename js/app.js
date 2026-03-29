@@ -1089,12 +1089,72 @@ function renderAll() {
   renderF1Video();
 }
 
+// ─── Race Countdown Timer ───────────────────────────────────────────────────────
+
+function startRaceCountdown() {
+  const container = document.getElementById('race-countdown');
+  if (!container) return;
+
+  // Find next upcoming race or sprint event
+  const now = new Date();
+  const nextEvent = F1Data.races.find(r => {
+    if (r.cancelled) return false;
+    return new Date(r.date + 'T00:00:00') > now;
+  });
+
+  if (!nextEvent) {
+    container.innerHTML = '';
+    return;
+  }
+
+  const flag = F1Data.getFlag ? F1Data.getFlag(nextEvent.country) : '';
+  const typeLabel = nextEvent.type === 'sprint' ? 'Sprint' : 'Race';
+
+  // Race start times (approximate) — sprints typically at 16:00, races at 15:00 local
+  // Use midnight of race day as a simple target
+  const targetDate = new Date(nextEvent.date + 'T00:00:00');
+
+  function update() {
+    const diff = targetDate - Date.now();
+    if (diff <= 0) {
+      container.innerHTML = `<span class="countdown-label">${typeLabel}</span>` +
+        `<span class="countdown-location">${flag} ${nextEvent.gp}</span>` +
+        `<span style="color:#22c55e;font-weight:600;">Race Day! 🏁</span>`;
+      return;
+    }
+
+    const days = Math.floor(diff / 86400000);
+    const hrs  = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    container.innerHTML =
+      `<span class="countdown-label">${typeLabel}</span>` +
+      `<span class="countdown-location">${flag} ${nextEvent.gp}</span>` +
+      `<span class="countdown-digits">` +
+        `<span class="countdown-unit"><span class="countdown-val">${String(days).padStart(2,'0')}</span><span class="countdown-lbl">Days</span></span>` +
+        `<span class="countdown-sep">:</span>` +
+        `<span class="countdown-unit"><span class="countdown-val">${String(hrs).padStart(2,'0')}</span><span class="countdown-lbl">Hrs</span></span>` +
+        `<span class="countdown-sep">:</span>` +
+        `<span class="countdown-unit"><span class="countdown-val">${String(mins).padStart(2,'0')}</span><span class="countdown-lbl">Min</span></span>` +
+        `<span class="countdown-sep">:</span>` +
+        `<span class="countdown-unit"><span class="countdown-val">${String(secs).padStart(2,'0')}</span><span class="countdown-lbl">Sec</span></span>` +
+      `</span>`;
+  }
+
+  update();
+  setInterval(update, 1000);
+}
+
 function init() {
   // Load and merge localStorage predictions (immediate, offline-first)
   mergePredictions();
 
   // Render all sections
   renderAll();
+
+  // Start countdown timer
+  startRaceCountdown();
 
   // Initialize Firebase sync: load shared predictions and listen for real-time updates
   if (typeof FirebaseSync !== 'undefined') {
