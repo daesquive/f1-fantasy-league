@@ -1095,30 +1095,51 @@ function startRaceCountdown() {
   const container = document.getElementById('race-countdown');
   if (!container) return;
 
-  // Find next upcoming race or sprint event
+  // Compare by date only (ignore time of day)
   const now = new Date();
-  const nextEvent = F1Data.races.find(r => {
-    if (r.cancelled) return false;
-    return new Date(r.date + 'T00:00:00') > now;
-  });
+  const todayStr = now.getFullYear() + '-' +
+    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+    String(now.getDate()).padStart(2, '0');
 
-  if (!nextEvent) {
+  // Find today's event (if any) and the next future event
+  const todayEvent = F1Data.races.find(r => !r.cancelled && r.date === todayStr);
+  const nextEvent = F1Data.races.find(r => !r.cancelled && r.date > todayStr);
+
+  // Show "Race Day!" for today, then countdown to next event
+  if (!todayEvent && !nextEvent) {
     container.innerHTML = '';
     return;
   }
 
-  const flag = F1Data.getFlag ? F1Data.getFlag(nextEvent.country) : '';
-  const typeLabel = nextEvent.type === 'sprint' ? 'Sprint' : 'Race';
+  if (todayEvent && !nextEvent) {
+    const flag = F1Data.getFlag ? F1Data.getFlag(todayEvent.country) : '';
+    const typeLabel = todayEvent.type === 'sprint' ? 'Sprint' : 'Race';
+    container.innerHTML = `<span class="countdown-label">${typeLabel}</span>` +
+      `<span class="countdown-location">${flag} ${todayEvent.gp}</span>` +
+      `<span style="color:#22c55e;font-weight:600;">Race Day! 🏁</span>`;
+    return;
+  }
 
-  // Race start times (approximate) — sprints typically at 16:00, races at 15:00 local
-  // Use midnight of race day as a simple target
-  const targetDate = new Date(nextEvent.date + 'T00:00:00');
+  const countdownTarget = nextEvent;
+  const flag = F1Data.getFlag ? F1Data.getFlag(countdownTarget.country) : '';
+  const typeLabel = countdownTarget.type === 'sprint' ? 'Sprint' : 'Race';
+  const targetDate = new Date(countdownTarget.date + 'T00:00:00');
+
+  // If there's also a race today, show both
+  const todayHtml = todayEvent ? (() => {
+    const tf = F1Data.getFlag ? F1Data.getFlag(todayEvent.country) : '';
+    const tl = todayEvent.type === 'sprint' ? 'Sprint' : 'Race';
+    return `<span class="countdown-label">${tl}</span>` +
+      `<span class="countdown-location">${tf} ${todayEvent.gp}</span>` +
+      `<span style="color:#22c55e;font-weight:600;">Race Day! 🏁</span>` +
+      `<span style="color:#444;margin:0 0.3rem;">|</span>`;
+  })() : '';
 
   function update() {
     const diff = targetDate - Date.now();
     if (diff <= 0) {
       container.innerHTML = `<span class="countdown-label">${typeLabel}</span>` +
-        `<span class="countdown-location">${flag} ${nextEvent.gp}</span>` +
+        `<span class="countdown-location">${flag} ${countdownTarget.gp}</span>` +
         `<span style="color:#22c55e;font-weight:600;">Race Day! 🏁</span>`;
       return;
     }
@@ -1128,9 +1149,9 @@ function startRaceCountdown() {
     const mins = Math.floor((diff % 3600000) / 60000);
     const secs = Math.floor((diff % 60000) / 1000);
 
-    container.innerHTML =
+    container.innerHTML = todayHtml +
       `<span class="countdown-label">${typeLabel}</span>` +
-      `<span class="countdown-location">${flag} ${nextEvent.gp}</span>` +
+      `<span class="countdown-location">${flag} ${countdownTarget.gp}</span>` +
       `<span class="countdown-digits">` +
         `<span class="countdown-unit"><span class="countdown-val">${String(days).padStart(2,'0')}</span><span class="countdown-lbl">Days</span></span>` +
         `<span class="countdown-sep">:</span>` +
