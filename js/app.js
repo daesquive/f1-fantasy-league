@@ -958,7 +958,14 @@ async function renderLiveTiming() {
   });
 
   const now = new Date();
-  const nextRace = F1Data.races.find(r => !r.cancelled && new Date(r.date) > now);
+  const nextRace = F1Data.races.find(r => {
+    if (r.cancelled) return false;
+    if (r.type !== 'race') return false; // Qualifying is for races, not sprints
+    // Skip if we already have actual qualifying results for this event
+    const idx = F1Data.races.indexOf(r);
+    if (F1Data.actualPoleTimes && F1Data.actualPoleTimes[idx] != null) return false;
+    return new Date(r.date) > now;
+  });
   const nextLabel = nextRace ? `Next: ${nextRace.gp} — ${nextRace.date}` : '';
 
   container.innerHTML = `
