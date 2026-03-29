@@ -215,7 +215,8 @@ function buildPlayerCard(player, total) {
       const isExcluded = exclusions.includes(i);
       if (isFullJoker || isDriverJokerForRace(player, driverName, i) || isExcluded) {
         const display = val !== null && val !== undefined ? `<s>${formatPoints(val)}</s>` : '—';
-        cells += `<td class="cell-null${sprintClass}${cancelledClass}">${display}</td>`;
+        const jokerCellClass = (!isFullJoker && player.jokerSwap) ? ' joker-cell' : '';
+        cells += `<td class="cell-null${jokerCellClass}${sprintClass}${cancelledClass}">${display}</td>`;
       } else {
         cells += `<td class="${pointsCellClass(val)}${sprintClass}${cancelledClass}">${formatPoints(val)}</td>`;
       }
