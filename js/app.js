@@ -519,11 +519,17 @@ function updatePredictionLocks() {
   if (!race) return;
 
   const now = new Date();
-  const raceDate = new Date(race.date + 'T00:00:00');
 
-  // Qualifying typically happens the day before the race (or same day for sprints)
-  // Lock pole predictions if qualifying has passed (race date - 1 day for races, same day for sprints)
-  const qualDate = new Date(raceDate);
+  // Use startTimeUTC if available for accurate lock timing, otherwise fall back to date at midnight
+  const raceDate = race.startTimeUTC
+    ? new Date(race.startTimeUTC)
+    : new Date(race.date + 'T00:00:00');
+
+  // Qualifying lock: use day before race for regular weekends, same day for sprint weekends
+  // For sprint events, sprint qualifying is day before, so midnight of sprint day is fine
+  const qualDate = new Date(race.startTimeUTC
+    ? new Date(race.startTimeUTC)
+    : new Date(race.date + 'T00:00:00'));
   if (race.type === 'race' && !race.sprintWeekend) {
     qualDate.setDate(qualDate.getDate() - 1); // Qualifying is Saturday (day before Sunday race)
   }
