@@ -139,6 +139,7 @@ const F1Data = {
       color: '#FF8000',
       drivers: ['Piastri', 'Hamilton', 'Verstappen', 'Russell', 'Sainz', 'Norris'],
       joker: 'Norris',
+      jokerSwap: { newJoker: 'Sainz', effectiveDate: '2026-05-03' },
       driverPoints: {
         'Piastri':    ['DNF', 3, 'DNS', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
         'Hamilton':   [12, 6, 15, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
