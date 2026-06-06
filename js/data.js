@@ -55,7 +55,7 @@ const F1Data = {
     { id: 'R06', label: 'Race 6',    gp: 'Miami',         code: 'MIA', country: 'US', circuit: 'Miami Gardens',         type: 'race',   sprintWeekend: true,  date: '2026-05-03', startTimeUTC: '2026-05-03T20:00:00Z' },
     { id: 'S03', label: 'Sprint 3',  gp: 'Canada',        code: 'CAN', country: 'CA', circuit: 'Montreal',              type: 'sprint', sprintWeekend: true,  date: '2026-05-23' },
     { id: 'R07', label: 'Race 7',    gp: 'Canada',        code: 'CAN', country: 'CA', circuit: 'Montreal',              type: 'race',   sprintWeekend: true,  date: '2026-05-24' },
-    { id: 'R08', label: 'Race 8',    gp: 'Monaco',        code: 'MON', country: 'MC', circuit: 'Circuit de Monaco',     type: 'race',   sprintWeekend: false, date: '2026-06-07' },
+    { id: 'R08', label: 'Race 8',    gp: 'Monaco',        code: 'MON', country: 'MC', circuit: 'Circuit de Monaco',     type: 'race',   sprintWeekend: false, date: '2026-06-07', startTimeUTC: '2026-06-07T13:00:00Z', qualifyingTimeUTC: '2026-06-06T14:00:00Z' },
     { id: 'R09', label: 'Race 9',    gp: 'Barcelona',     code: 'ESP', country: 'ES', circuit: 'Circuit de Barcelona',  type: 'race',   sprintWeekend: false, date: '2026-06-14' },
     { id: 'R10', label: 'Race 10',   gp: 'Austria',       code: 'AUT', country: 'AT', circuit: 'Red Bull Ring',         type: 'race',   sprintWeekend: false, date: '2026-06-28' },
     { id: 'S04', label: 'Sprint 4',  gp: 'British',       code: 'GBR', country: 'GB', circuit: 'Silverstone',           type: 'sprint', sprintWeekend: true,  date: '2026-07-04' },

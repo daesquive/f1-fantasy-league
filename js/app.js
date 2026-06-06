@@ -525,14 +525,18 @@ function updatePredictionLocks() {
     ? new Date(race.startTimeUTC)
     : new Date(race.date + 'T00:00:00');
 
-  // Qualifying lock: use day before race for regular weekends, same day for sprint weekends
-  // For sprint events, sprint qualifying is day before, so midnight of sprint day is fine
-  const qualDate = new Date(race.startTimeUTC
-    ? new Date(race.startTimeUTC)
-    : new Date(race.date + 'T00:00:00'));
-  if (race.type === 'race' && !race.sprintWeekend) {
-    qualDate.setDate(qualDate.getDate() - 1); // Qualifying is Saturday (day before Sunday race)
-  }
+  // Qualifying lock: use qualifyingTimeUTC if available, otherwise fall back to day-before-race at midnight
+  const qualDate = race.qualifyingTimeUTC
+    ? new Date(race.qualifyingTimeUTC)
+    : (() => {
+        const d = new Date(race.startTimeUTC
+          ? new Date(race.startTimeUTC)
+          : new Date(race.date + 'T00:00:00'));
+        if (race.type === 'race' && !race.sprintWeekend) {
+          d.setDate(d.getDate() - 1); // Qualifying is Saturday (day before Sunday race)
+        }
+        return d;
+      })();
 
   // Also check if we already have actual results — that's a definitive lock
   const hasActualPole = F1Data.actualPoleTimes && F1Data.actualPoleTimes[raceIdx] != null;
@@ -1152,7 +1156,9 @@ function startRaceCountdown() {
   const countdownTarget = nextEvent;
   const flag = F1Data.getFlag ? F1Data.getFlag(countdownTarget.country) : '';
   const typeLabel = countdownTarget.type === 'sprint' ? 'Sprint' : 'Race';
-  const targetDate = new Date(countdownTarget.date + 'T00:00:00');
+  const targetDate = countdownTarget.startTimeUTC
+    ? new Date(countdownTarget.startTimeUTC)
+    : new Date(countdownTarget.date + 'T00:00:00');
 
   // If there's also a race today, show both
   const todayHtml = todayEvent ? (() => {
