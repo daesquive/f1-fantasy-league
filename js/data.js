@@ -156,7 +156,7 @@ const F1Data = {
         ['Russell', 'Antonelli', 'Leclerc'],
         null, null, null, ['Norris', 'Piastri', 'Antonelli'], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
       ],
-      polePredictions: [78.300, 93.228, 90.108, 87.7, null, null, null, null, null, 72.578, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+      polePredictions: [78.300, 93.228, 90.108, 87.7, null, null, null, null, null, 72.965, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
     }
   ],
 
