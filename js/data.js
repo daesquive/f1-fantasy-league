@@ -88,12 +88,12 @@ const F1Data = {
       jokerSwap: { newJoker: 'Gasly', effectiveDate: '2026-03-29' },
       // Points per event (index matches races array)
       driverPoints: {
-        'Hadjar':   ['DNF', 0, 4, 0, null, null, 0, 0, 0, 10, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Hamilton': [12, 6, 15, 8, null, null, 2, 8, 3, 18, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Norris':   [10, 5, 'DNS', 10, null, null, 8, 18, 7, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Russell':  [25, 8, 18, 12, null, null, 5, 12, 8, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Gasly':    [1, 0, 8, 6, null, null, 1, 0, 0, 4, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Piastri':  [null, 3, null, 18, null, null, 7, 15, 5, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        'Hadjar':   ['DNF', 0, 4, 0, null, null, 0, 0, 0, 10, 15, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Hamilton': [12, 6, 15, 8, null, null, 2, 8, 3, 18, 18, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Norris':   [10, 5, 'DNS', 10, null, null, 8, 18, 7, 0, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Russell':  [25, 8, 18, 12, null, null, 5, 12, 8, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Gasly':    [1, 0, 8, 6, null, null, 1, 0, 0, 4, 6, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Piastri':  [null, 3, null, 18, null, null, 7, 15, 5, 0, 12, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
       },
       podiumPoints: [10, 10, 10, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
       polePoints:   [0, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
@@ -116,12 +116,12 @@ const F1Data = {
       // Drivers excluded from specific race indices (not picked for that race)
       driverExclusions: { 'Antonelli': [0] },
       driverPoints: {
-        'Perez':      [0, null, null, 0, null, null, 0, 0, 0, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Piastri':    ['DNF', 3, 'DNS', 18, null, null, 7, 15, 5, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Russell':    [25, 8, 18, 12, null, null, 5, 12, 8, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Verstappen': [8, 0, 0, 4, null, null, 4, 10, 2, 15, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Leclerc':    [15, 7, 12, 15, null, null, 6, 4, 4, 12, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Antonelli':  [null, 4, 25, 25, null, null, 3, 25, 6, 25, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        'Perez':      [0, null, null, 0, null, null, 0, 0, 0, 'DNF', 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Piastri':    ['DNF', 3, 'DNS', 18, null, null, 7, 15, 5, 0, 12, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Russell':    [25, 8, 18, 12, null, null, 5, 12, 8, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Verstappen': [8, 0, 0, 4, null, null, 4, 10, 2, 15, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Leclerc':    [15, 7, 12, 15, null, null, 6, 4, 4, 12, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Antonelli':  [null, 4, 25, 25, null, null, 3, 25, 6, 25, 25, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
       },
       podiumPoints: [5, 10, 10, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
       polePoints:   [5, 5, 5, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
@@ -141,12 +141,12 @@ const F1Data = {
       joker: 'Norris',
       jokerSwap: { newJoker: 'Sainz', effectiveDate: '2026-05-03' },
       driverPoints: {
-        'Piastri':    ['DNF', 3, 'DNS', 18, null, null, 7, 15, 5, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Hamilton':   [12, 6, 15, 8, null, null, 2, 8, 3, 18, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Verstappen': [8, 0, 0, 4, null, null, 4, 10, 2, 15, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Russell':    [25, 8, 18, 12, null, null, 5, 12, 8, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Sainz':      [0, 0, 2, 0, null, null, 0, 0, 0, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        'Norris':     [null, null, null, 10, null, null, 8, 18, 7, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        'Piastri':    ['DNF', 3, 'DNS', 18, null, null, 7, 15, 5, 0, 12, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Hamilton':   [12, 6, 15, 8, null, null, 2, 8, 3, 18, 18, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Verstappen': [8, 0, 0, 4, null, null, 4, 10, 2, 15, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Russell':    [25, 8, 18, 12, null, null, 5, 12, 8, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Sainz':      [0, 0, 2, 0, null, null, 0, 0, 0, 2, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        'Norris':     [null, null, null, 10, null, null, 8, 18, 7, 0, 'DNF', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
       },
       podiumPoints: [10, 10, 10, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
       polePoints:   [0, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
@@ -161,7 +161,7 @@ const F1Data = {
   ],
 
   // Actual race results - actual pole times in seconds
-  actualPoleTimes: [78.518, 91.520, 92.064, 88.778, null, null, 87.869, 87.798, null, 72.578, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  actualPoleTimes: [78.518, 91.520, 92.064, 88.778, null, null, 87.869, 87.798, null, 72.578, 72.051, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
 
   // Latest qualifying results (fallback when Jolpica API lags behind)
   latestQualifying: {
@@ -203,48 +203,50 @@ const F1Data = {
     ['Norris', 'Piastri', 'Leclerc'],
     ['Antonelli', 'Norris', 'Piastri'],
     ['Russell', 'Norris', 'Antonelli'],
-    ['Antonelli', 'Hamilton', 'Verstappen'], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
+    ['Antonelli', 'Hamilton', 'Verstappen'],
+    ['Antonelli', 'Hamilton', 'Hadjar'], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
   ],
 
-  // WDC Standings (current - after Round 5 Canada)
+  // WDC Standings (current - after Monaco)
   wdc: [
-    { driver: 'Antonelli',  points: 131 },
+    { driver: 'Antonelli',  points: 156 },
+    { driver: 'Hamilton',   points: 90 },
     { driver: 'Russell',    points: 88 },
     { driver: 'Leclerc',    points: 75 },
-    { driver: 'Hamilton',   points: 72 },
+    { driver: 'Piastri',    points: 60 },
     { driver: 'Norris',     points: 58 },
-    { driver: 'Piastri',    points: 48 },
     { driver: 'Verstappen', points: 43 },
-    { driver: 'Gasly',      points: 20 },
+    { driver: 'Hadjar',     points: 29 },
+    { driver: 'Lawson',     points: 26 },
+    { driver: 'Gasly',      points: 26 },
     { driver: 'Bearman',    points: 18 },
     { driver: 'Colapinto',  points: 15 },
-    { driver: 'Hadjar',     points: 14 },
-    { driver: 'Lawson',     points: 14 },
-    { driver: 'Lindblad',   points: 5 },
-    { driver: 'Sainz',      points: 4 },
+    { driver: 'Lindblad',   points: 13 },
+    { driver: 'Sainz',      points: 6 },
+    { driver: 'Albon',      points: 5 },
+    { driver: 'Ocon',       points: 3 },
     { driver: 'Bortoleto',  points: 2 },
-    { driver: 'Alonso',     points: 0 },
-    { driver: 'Stroll',     points: 0 },
-    { driver: 'Ocon',       points: 0 },
-    { driver: 'Albon',      points: 0 },
+    { driver: 'Alonso',     points: 1 },
     { driver: 'Hulkenberg', points: 0 },
+    { driver: 'Stroll',     points: 0 },
     { driver: 'Perez',      points: 0 },
     { driver: 'Bottas',     points: 0 }
   ],
 
-  // WCC Standings (current - after Round 5 Canada)
+  // WCC Standings (current - after Monaco)
   wcc: [
-    { team: 'Mercedes',      points: 219 },
-    { team: 'Ferrari',       points: 147 },
-    { team: 'McLaren',       points: 106 },
-    { team: 'Red Bull',      points: 57 },
-    { team: 'Alpine',        points: 35 },
-    { team: 'Racing Bulls',  points: 19 },
-    { team: 'Haas',          points: 18 },
-    { team: 'Williams',      points: 4 },
+    { team: 'Mercedes',      points: 244 },
+    { team: 'Ferrari',       points: 165 },
+    { team: 'McLaren',       points: 118 },
+    { team: 'Red Bull',      points: 72 },
+    { team: 'Alpine',        points: 41 },
+    { team: 'Racing Bulls',  points: 37 },
+    { team: 'Haas',          points: 20 },
+    { team: 'Williams',      points: 8 },
     { team: 'Audi',          points: 2 },
-    { team: 'Aston Martin',  points: 0 },
+    { team: 'Aston Martin',  points: 1 },
     { team: 'Cadillac',      points: 0 }
+  ],
   ],  // F1 Points system
   racePoints: { 1: 25, 2: 18, 3: 15, 4: 12, 5: 10, 6: 8, 7: 6, 8: 4, 9: 2, 10: 1 },
   sprintPoints: { 1: 8, 2: 7, 3: 6, 4: 5, 5: 4, 6: 3, 7: 2, 8: 1 },
