@@ -659,7 +659,9 @@ function mergePredictions() {
 }
 
 // Merge prediction data (from localStorage or Firebase) into F1Data
-// For completed races (actual result known), data.js is authoritative — skip localStorage/Firebase overrides.
+// data.js takes priority: if it already has a non-null value for an index, localStorage/Firebase is ignored.
+// This prevents stale UI submissions from overwriting manually-corrected historical data,
+// while still allowing legitimate pre-race predictions to show for races where data.js has no entry.
 function mergePredictionsFromData(stored) {
   if (!stored) return;
 
@@ -668,21 +670,25 @@ function mergePredictionsFromData(stored) {
     if (!player) return;
 
     const idx = pred.raceIndex;
-    const raceComplete = F1Data.actualPodiums && F1Data.actualPodiums[idx] != null;
-    const poleComplete = F1Data.actualPoleTimes && F1Data.actualPoleTimes[idx] != null;
 
-    if (pred.podium && !raceComplete) {
+    if (pred.podium) {
       if (!player.podiumPredictions) {
         player.podiumPredictions = new Array(F1Data.races.length).fill(null);
       }
-      player.podiumPredictions[idx] = pred.podium;
+      // Only apply if data.js has no value here (data.js is authoritative)
+      if (player.podiumPredictions[idx] == null) {
+        player.podiumPredictions[idx] = pred.podium;
+      }
     }
 
-    if (pred.poleTime !== null && pred.poleTime !== undefined && !poleComplete) {
+    if (pred.poleTime !== null && pred.poleTime !== undefined) {
       if (!player.polePredictions) {
         player.polePredictions = new Array(F1Data.races.length).fill(null);
       }
-      player.polePredictions[idx] = pred.poleTime;
+      // Only apply if data.js has no value here (data.js is authoritative)
+      if (player.polePredictions[idx] == null) {
+        player.polePredictions[idx] = pred.poleTime;
+      }
     }
   });
 }
