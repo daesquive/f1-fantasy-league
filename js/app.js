@@ -891,37 +891,35 @@ async function renderLiveTiming() {
     }
   }
 
-  if (!timingData) {
+  if (!timingData && typeof F1API !== 'undefined' && typeof F1API.fetchAllRaces === 'function') {
     try {
-      const resp = await fetch(`https://api.jolpi.ca/ergast/f1/${F1Data.season}/qualifying.json?limit=1000`);
-      if (resp.ok) {
-        const data = await resp.json();
-        const races = data?.MRData?.RaceTable?.Races;
-        if (races && races.length > 0) {
-          // Find latest race that has actual qualifying times
-          let targetRace = null;
-          for (let ri = races.length - 1; ri >= 0; ri--) {
-            const qr = races[ri].QualifyingResults || [];
-            const hasTime = qr.some(r => r.Q3 || r.Q2 || r.Q1);
-            if (hasTime) { targetRace = races[ri]; break; }
-          }
-          if (!targetRace) targetRace = races[races.length - 1];
-          const results = targetRace.QualifyingResults || [];
-          timingData = {
-            sessionName: targetRace.raceName || 'Qualifying',
-            round: targetRace.round,
-            entries: results.map(r => {
-              const bestTime = r.Q3 || r.Q2 || r.Q1 || '';
-              return {
-                pos: parseInt(r.position, 10),
-                code: r.Driver?.code || '???',
-                familyName: r.Driver?.familyName || '',
-                constructorName: r.Constructor?.name || '',
-                time: bestTime
-              };
-            })
-          };
+      // Paginate the full season (Jolpica caps `limit` at 100) so the latest
+      // qualifying isn't dropped once the season passes ~5 rounds.
+      const races = await F1API.fetchAllRaces('qualifying.json');
+      if (races && races.length > 0) {
+        // Find latest race that has actual qualifying times
+        let targetRace = null;
+        for (let ri = races.length - 1; ri >= 0; ri--) {
+          const qr = races[ri].QualifyingResults || [];
+          const hasTime = qr.some(r => r.Q3 || r.Q2 || r.Q1);
+          if (hasTime) { targetRace = races[ri]; break; }
         }
+        if (!targetRace) targetRace = races[races.length - 1];
+        const results = targetRace.QualifyingResults || [];
+        timingData = {
+          sessionName: targetRace.raceName || 'Qualifying',
+          round: targetRace.round,
+          entries: results.map(r => {
+            const bestTime = r.Q3 || r.Q2 || r.Q1 || '';
+            return {
+              pos: parseInt(r.position, 10),
+              code: r.Driver?.code || '???',
+              familyName: r.Driver?.familyName || '',
+              constructorName: r.Constructor?.name || '',
+              time: bestTime
+            };
+          })
+        };
       }
     } catch (e) {
       console.warn('[Timing] Could not fetch qualifying data:', e.message);

@@ -195,11 +195,51 @@ const F1API = (() => {
     return resp.json();
   }
 
+  // Fetch ALL pages of a RaceTable endpoint and merge them by round.
+  // Jolpica silently caps `limit` at 100, so a single ?limit=1000 request only
+  // returns the first ~5 races. A single race's rows can also span a page
+  // boundary, so results for the same round are concatenated rather than
+  // duplicated. Endpoint examples: 'results.json', 'qualifying.json', 'sprint.json'.
+  async function fetchAllRaces(endpoint) {
+    const PAGE = 100;
+    const MAX_PAGES = 50; // safety guard (up to 5000 rows)
+    const byRound = new Map();
+    let offset = 0;
+    let total = Infinity;
+
+    for (let page = 0; page < MAX_PAGES && offset < total; page++) {
+      const sep = endpoint.includes('?') ? '&' : '?';
+      const data = await fetchJSON(`${endpoint}${sep}limit=${PAGE}&offset=${offset}`);
+      const mr = data && data.MRData;
+      if (!mr) break;
+      total = parseInt(mr.total, 10) || 0;
+      const races = (mr.RaceTable && mr.RaceTable.Races) || [];
+      if (races.length === 0) break;
+
+      for (const race of races) {
+        const existing = byRound.get(race.round);
+        if (!existing) {
+          byRound.set(race.round, race);
+        } else {
+          // Same race split across pages — concatenate its result arrays.
+          for (const field of ['Results', 'QualifyingResults', 'SprintResults']) {
+            if (race[field]) {
+              existing[field] = (existing[field] || []).concat(race[field]);
+            }
+          }
+        }
+      }
+      offset += PAGE;
+    }
+
+    return Array.from(byRound.values())
+      .sort((a, b) => parseInt(a.round, 10) - parseInt(b.round, 10));
+  }
+
   // --- Core Fetchers ---
 
   async function fetchRaceResults() {
-    const data = await fetchJSON('results.json?limit=1000');
-    const races = data?.MRData?.RaceTable?.Races;
+    const races = await fetchAllRaces('results.json');
     if (!races || races.length === 0) return null;
 
     const results = [];
@@ -234,8 +274,7 @@ const F1API = (() => {
   }
 
   async function fetchQualifyingResults() {
-    const data = await fetchJSON('qualifying.json?limit=1000');
-    const races = data?.MRData?.RaceTable?.Races;
+    const races = await fetchAllRaces('qualifying.json');
     if (!races || races.length === 0) return null;
 
     const results = [];
@@ -266,8 +305,7 @@ const F1API = (() => {
   }
 
   async function fetchSprintResults() {
-    const data = await fetchJSON('sprint.json?limit=1000');
-    const races = data?.MRData?.RaceTable?.Races;
+    const races = await fetchAllRaces('sprint.json');
     if (!races || races.length === 0) return null;
 
     const results = [];
@@ -561,6 +599,7 @@ const F1API = (() => {
     init,
     refresh,
     updateFromAPI,
+    fetchAllRaces,
     fetchRaceResults,
     fetchQualifyingResults,
     fetchSprintResults,
