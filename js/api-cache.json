@@ -6826,7 +6826,7 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/qualifying.json",
       "limit": "100",
       "offset": "0",
-      "total": "173",
+      "total": "195",
       "RaceTable": {
         "season": "2026",
         "Races": [
@@ -9874,5 +9874,5 @@
       }
     }
   },
-  "lastUpdated": "2026-07-04T17:01:09.637Z"
+  "lastUpdated": "2026-07-04T19:06:43.415Z"
 }
