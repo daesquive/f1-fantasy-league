@@ -6,7 +6,7 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/results.json",
       "limit": "100",
       "offset": "0",
-      "total": "198",
+      "total": "220",
       "RaceTable": {
         "season": "2026",
         "Races": [
@@ -9189,8 +9189,8 @@
               {
                 "position": "1",
                 "positionText": "1",
-                "points": "179",
-                "wins": "5",
+                "points": "204",
+                "wins": "6",
                 "Driver": {
                   "driverId": "antonelli",
                   "permanentNumber": "12",
@@ -9213,6 +9213,30 @@
               {
                 "position": "2",
                 "positionText": "2",
+                "points": "159",
+                "wins": "1",
+                "Driver": {
+                  "driverId": "hamilton",
+                  "permanentNumber": "44",
+                  "code": "HAM",
+                  "url": "http://en.wikipedia.org/wiki/Lewis_Hamilton",
+                  "givenName": "Lewis",
+                  "familyName": "Hamilton",
+                  "dateOfBirth": "1985-01-07",
+                  "nationality": "British"
+                },
+                "Constructors": [
+                  {
+                    "constructorId": "ferrari",
+                    "url": "https://en.wikipedia.org/wiki/Scuderia_Ferrari",
+                    "name": "Ferrari",
+                    "nationality": "Italian"
+                  }
+                ]
+              },
+              {
+                "position": "3",
+                "positionText": "3",
                 "points": "154",
                 "wins": "2",
                 "Driver": {
@@ -9235,33 +9259,9 @@
                 ]
               },
               {
-                "position": "3",
-                "positionText": "3",
-                "points": "147",
-                "wins": "1",
-                "Driver": {
-                  "driverId": "hamilton",
-                  "permanentNumber": "44",
-                  "code": "HAM",
-                  "url": "http://en.wikipedia.org/wiki/Lewis_Hamilton",
-                  "givenName": "Lewis",
-                  "familyName": "Hamilton",
-                  "dateOfBirth": "1985-01-07",
-                  "nationality": "British"
-                },
-                "Constructors": [
-                  {
-                    "constructorId": "ferrari",
-                    "url": "https://en.wikipedia.org/wiki/Scuderia_Ferrari",
-                    "name": "Ferrari",
-                    "nationality": "Italian"
-                  }
-                ]
-              },
-              {
                 "position": "4",
                 "positionText": "4",
-                "points": "108",
+                "points": "126",
                 "wins": "1",
                 "Driver": {
                   "driverId": "leclerc",
@@ -9285,7 +9285,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "97",
+                "points": "103",
                 "wins": "0",
                 "Driver": {
                   "driverId": "norris",
@@ -9309,7 +9309,7 @@
               {
                 "position": "6",
                 "positionText": "6",
-                "points": "82",
+                "points": "92",
                 "wins": "0",
                 "Driver": {
                   "driverId": "piastri",
@@ -9333,7 +9333,7 @@
               {
                 "position": "7",
                 "positionText": "7",
-                "points": "76",
+                "points": "91",
                 "wins": "0",
                 "Driver": {
                   "driverId": "max_verstappen",
@@ -9357,7 +9357,7 @@
               {
                 "position": "8",
                 "positionText": "8",
-                "points": "52",
+                "points": "60",
                 "wins": "0",
                 "Driver": {
                   "driverId": "hadjar",
@@ -9429,7 +9429,7 @@
               {
                 "position": "11",
                 "positionText": "11",
-                "points": "20",
+                "points": "22",
                 "wins": "0",
                 "Driver": {
                   "driverId": "arvid_lindblad",
@@ -9453,6 +9453,30 @@
               {
                 "position": "12",
                 "positionText": "12",
+                "points": "19",
+                "wins": "0",
+                "Driver": {
+                  "driverId": "colapinto",
+                  "permanentNumber": "43",
+                  "code": "COL",
+                  "url": "http://en.wikipedia.org/wiki/Franco_Colapinto",
+                  "givenName": "Franco",
+                  "familyName": "Colapinto",
+                  "dateOfBirth": "2003-05-27",
+                  "nationality": "Argentine"
+                },
+                "Constructors": [
+                  {
+                    "constructorId": "alpine",
+                    "url": "https://en.wikipedia.org/wiki/Alpine_F1_Team",
+                    "name": "Alpine F1 Team",
+                    "nationality": "French"
+                  }
+                ]
+              },
+              {
+                "position": "13",
+                "positionText": "13",
                 "points": "18",
                 "wins": "0",
                 "Driver": {
@@ -9475,33 +9499,9 @@
                 ]
               },
               {
-                "position": "13",
-                "positionText": "13",
-                "points": "18",
-                "wins": "0",
-                "Driver": {
-                  "driverId": "colapinto",
-                  "permanentNumber": "43",
-                  "code": "COL",
-                  "url": "http://en.wikipedia.org/wiki/Franco_Colapinto",
-                  "givenName": "Franco",
-                  "familyName": "Colapinto",
-                  "dateOfBirth": "2003-05-27",
-                  "nationality": "Argentine"
-                },
-                "Constructors": [
-                  {
-                    "constructorId": "alpine",
-                    "url": "https://en.wikipedia.org/wiki/Alpine_F1_Team",
-                    "name": "Alpine F1 Team",
-                    "nationality": "French"
-                  }
-                ]
-              },
-              {
                 "position": "14",
                 "positionText": "14",
-                "points": "6",
+                "points": "10",
                 "wins": "0",
                 "Driver": {
                   "driverId": "bortoleto",
@@ -9739,8 +9739,8 @@
               {
                 "position": "1",
                 "positionText": "1",
-                "points": "333",
-                "wins": "7",
+                "points": "358",
+                "wins": "8",
                 "Constructor": {
                   "constructorId": "mercedes",
                   "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One",
@@ -9751,7 +9751,7 @@
               {
                 "position": "2",
                 "positionText": "2",
-                "points": "255",
+                "points": "285",
                 "wins": "2",
                 "Constructor": {
                   "constructorId": "ferrari",
@@ -9763,7 +9763,7 @@
               {
                 "position": "3",
                 "positionText": "3",
-                "points": "179",
+                "points": "195",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "mclaren",
@@ -9775,7 +9775,7 @@
               {
                 "position": "4",
                 "positionText": "4",
-                "points": "128",
+                "points": "151",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "red_bull",
@@ -9787,7 +9787,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "60",
+                "points": "61",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "alpine",
@@ -9799,7 +9799,7 @@
               {
                 "position": "6",
                 "positionText": "6",
-                "points": "59",
+                "points": "61",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "rb",
@@ -9835,7 +9835,7 @@
               {
                 "position": "9",
                 "positionText": "9",
-                "points": "6",
+                "points": "10",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "audi",
@@ -9874,5 +9874,5 @@
       }
     }
   },
-  "lastUpdated": "2026-07-19T14:52:25.939Z"
+  "lastUpdated": "2026-07-19T16:55:06.433Z"
 }
