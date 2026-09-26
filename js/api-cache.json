@@ -6,7 +6,7 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/results.json",
       "limit": "100",
       "offset": "0",
-      "total": "308",
+      "total": "330",
       "RaceTable": {
         "season": "2026",
         "Races": [
@@ -9642,7 +9642,7 @@
               {
                 "position": "1",
                 "positionText": "1",
-                "points": "292",
+                "points": "302",
                 "wins": "8",
                 "Driver": {
                   "driverId": "antonelli",
@@ -9666,8 +9666,8 @@
               {
                 "position": "2",
                 "positionText": "2",
-                "points": "211",
-                "wins": "2",
+                "points": "236",
+                "wins": "3",
                 "Driver": {
                   "driverId": "russell",
                   "permanentNumber": "63",
@@ -9690,7 +9690,7 @@
               {
                 "position": "3",
                 "positionText": "3",
-                "points": "191",
+                "points": "199",
                 "wins": "1",
                 "Driver": {
                   "driverId": "hamilton",
@@ -9738,7 +9738,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "167",
+                "points": "179",
                 "wins": "1",
                 "Driver": {
                   "driverId": "leclerc",
@@ -9762,7 +9762,7 @@
               {
                 "position": "6",
                 "positionText": "6",
-                "points": "145",
+                "points": "163",
                 "wins": "0",
                 "Driver": {
                   "driverId": "max_verstappen",
@@ -9810,7 +9810,7 @@
               {
                 "position": "8",
                 "positionText": "8",
-                "points": "71",
+                "points": "86",
                 "wins": "0",
                 "Driver": {
                   "driverId": "hadjar",
@@ -9888,7 +9888,7 @@
               {
                 "position": "11",
                 "positionText": "11",
-                "points": "31",
+                "points": "37",
                 "wins": "0",
                 "Driver": {
                   "driverId": "arvid_lindblad",
@@ -9936,7 +9936,7 @@
               {
                 "position": "13",
                 "positionText": "13",
-                "points": "18",
+                "points": "20",
                 "wins": "0",
                 "Driver": {
                   "driverId": "bearman",
@@ -10008,7 +10008,31 @@
               {
                 "position": "16",
                 "positionText": "16",
-                "points": "6",
+                "points": "7",
+                "wins": "0",
+                "Driver": {
+                  "driverId": "ocon",
+                  "permanentNumber": "31",
+                  "code": "OCO",
+                  "url": "http://en.wikipedia.org/wiki/Esteban_Ocon",
+                  "givenName": "Esteban",
+                  "familyName": "Ocon",
+                  "dateOfBirth": "1996-09-17",
+                  "nationality": "French"
+                },
+                "Constructors": [
+                  {
+                    "constructorId": "haas",
+                    "url": "https://en.wikipedia.org/wiki/Haas_F1_Team",
+                    "name": "Haas F1 Team",
+                    "nationality": "American"
+                  }
+                ]
+              },
+              {
+                "position": "17",
+                "positionText": "17",
+                "points": "7",
                 "wins": "0",
                 "Driver": {
                   "driverId": "sainz",
@@ -10030,8 +10054,8 @@
                 ]
               },
               {
-                "position": "17",
-                "positionText": "17",
+                "position": "18",
+                "positionText": "18",
                 "points": "5",
                 "wins": "0",
                 "Driver": {
@@ -10050,30 +10074,6 @@
                     "url": "https://en.wikipedia.org/wiki/Williams_Racing",
                     "name": "Williams",
                     "nationality": "British"
-                  }
-                ]
-              },
-              {
-                "position": "18",
-                "positionText": "18",
-                "points": "3",
-                "wins": "0",
-                "Driver": {
-                  "driverId": "ocon",
-                  "permanentNumber": "31",
-                  "code": "OCO",
-                  "url": "http://en.wikipedia.org/wiki/Esteban_Ocon",
-                  "givenName": "Esteban",
-                  "familyName": "Ocon",
-                  "dateOfBirth": "1996-09-17",
-                  "nationality": "French"
-                },
-                "Constructors": [
-                  {
-                    "constructorId": "haas",
-                    "url": "https://en.wikipedia.org/wiki/Haas_F1_Team",
-                    "name": "Haas F1 Team",
-                    "nationality": "American"
                   }
                 ]
               },
@@ -10222,8 +10222,8 @@
               {
                 "position": "1",
                 "positionText": "1",
-                "points": "503",
-                "wins": "10",
+                "points": "538",
+                "wins": "11",
                 "Constructor": {
                   "constructorId": "mercedes",
                   "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One",
@@ -10234,7 +10234,7 @@
               {
                 "position": "2",
                 "positionText": "2",
-                "points": "358",
+                "points": "378",
                 "wins": "2",
                 "Constructor": {
                   "constructorId": "ferrari",
@@ -10258,7 +10258,7 @@
               {
                 "position": "4",
                 "positionText": "4",
-                "points": "230",
+                "points": "263",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "red_bull",
@@ -10270,7 +10270,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "77",
+                "points": "83",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "rb",
@@ -10294,7 +10294,7 @@
               {
                 "position": "7",
                 "positionText": "7",
-                "points": "21",
+                "points": "27",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "haas",
@@ -10318,7 +10318,7 @@
               {
                 "position": "9",
                 "positionText": "9",
-                "points": "11",
+                "points": "12",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "williams",
@@ -10357,5 +10357,5 @@
       }
     }
   },
-  "lastUpdated": "2026-09-26T09:04:00.939Z"
+  "lastUpdated": "2026-09-26T14:03:51.724Z"
 }
