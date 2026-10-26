@@ -6,7 +6,7 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/results.json",
       "limit": "100",
       "offset": "0",
-      "total": "374",
+      "total": "396",
       "RaceTable": {
         "season": "2026",
         "Races": [
@@ -9642,8 +9642,8 @@
               {
                 "position": "1",
                 "positionText": "1",
-                "points": "340",
-                "wins": "8",
+                "points": "365",
+                "wins": "9",
                 "Driver": {
                   "driverId": "antonelli",
                   "permanentNumber": "12",
@@ -9666,7 +9666,7 @@
               {
                 "position": "2",
                 "positionText": "2",
-                "points": "238",
+                "points": "242",
                 "wins": "3",
                 "Driver": {
                   "driverId": "russell",
@@ -9690,7 +9690,7 @@
               {
                 "position": "3",
                 "positionText": "3",
-                "points": "229",
+                "points": "241",
                 "wins": "1",
                 "Driver": {
                   "driverId": "hamilton",
@@ -9714,7 +9714,7 @@
               {
                 "position": "4",
                 "positionText": "4",
-                "points": "221",
+                "points": "236",
                 "wins": "2",
                 "Driver": {
                   "driverId": "max_verstappen",
@@ -9738,7 +9738,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "215",
+                "points": "233",
                 "wins": "1",
                 "Driver": {
                   "driverId": "leclerc",
@@ -9762,7 +9762,7 @@
               {
                 "position": "6",
                 "positionText": "6",
-                "points": "201",
+                "points": "211",
                 "wins": "2",
                 "Driver": {
                   "driverId": "norris",
@@ -9786,7 +9786,7 @@
               {
                 "position": "7",
                 "positionText": "7",
-                "points": "138",
+                "points": "144",
                 "wins": "0",
                 "Driver": {
                   "driverId": "piastri",
@@ -9810,7 +9810,7 @@
               {
                 "position": "8",
                 "positionText": "8",
-                "points": "97",
+                "points": "105",
                 "wins": "0",
                 "Driver": {
                   "driverId": "hadjar",
@@ -9834,7 +9834,7 @@
               {
                 "position": "9",
                 "positionText": "9",
-                "points": "75",
+                "points": "77",
                 "wins": "0",
                 "Driver": {
                   "driverId": "lawson",
@@ -9864,7 +9864,7 @@
               {
                 "position": "10",
                 "positionText": "10",
-                "points": "41",
+                "points": "42",
                 "wins": "0",
                 "Driver": {
                   "driverId": "gasly",
@@ -10222,8 +10222,8 @@
               {
                 "position": "1",
                 "positionText": "1",
-                "points": "578",
-                "wins": "11",
+                "points": "607",
+                "wins": "12",
                 "Constructor": {
                   "constructorId": "mercedes",
                   "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One",
@@ -10234,7 +10234,7 @@
               {
                 "position": "2",
                 "positionText": "2",
-                "points": "444",
+                "points": "474",
                 "wins": "2",
                 "Constructor": {
                   "constructorId": "ferrari",
@@ -10246,19 +10246,7 @@
               {
                 "position": "3",
                 "positionText": "3",
-                "points": "339",
-                "wins": "2",
-                "Constructor": {
-                  "constructorId": "mclaren",
-                  "url": "https://en.wikipedia.org/wiki/McLaren",
-                  "name": "McLaren",
-                  "nationality": "British"
-                }
-              },
-              {
-                "position": "4",
-                "positionText": "4",
-                "points": "332",
+                "points": "355",
                 "wins": "2",
                 "Constructor": {
                   "constructorId": "red_bull",
@@ -10268,9 +10256,21 @@
                 }
               },
               {
+                "position": "4",
+                "positionText": "4",
+                "points": "355",
+                "wins": "2",
+                "Constructor": {
+                  "constructorId": "mclaren",
+                  "url": "https://en.wikipedia.org/wiki/McLaren",
+                  "name": "McLaren",
+                  "nationality": "British"
+                }
+              },
+              {
                 "position": "5",
                 "positionText": "5",
-                "points": "100",
+                "points": "102",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "rb",
@@ -10282,7 +10282,7 @@
               {
                 "position": "6",
                 "positionText": "6",
-                "points": "68",
+                "points": "69",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "alpine",
@@ -10357,5 +10357,5 @@
       }
     }
   },
-  "lastUpdated": "2026-10-25T22:16:11.538Z"
+  "lastUpdated": "2026-10-26T14:58:29.259Z"
 }
