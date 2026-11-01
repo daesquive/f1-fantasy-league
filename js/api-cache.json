@@ -10204,8 +10204,13 @@
                 "wins": "0",
                 "Driver": {
                   "driverId": "ryo_hirakawa",
+                  "permanentNumber": "50",
+                  "code": "HIR",
+                  "url": "https://en.wikipedia.org/wiki/Ryo_Hirakawa",
                   "givenName": "Ryo",
-                  "familyName": "Hirakawa"
+                  "familyName": "Hirakawa",
+                  "dateOfBirth": "1994-03-07",
+                  "nationality": "Japanese"
                 },
                 "Constructors": [
                   {
@@ -10376,5 +10381,5 @@
       }
     }
   },
-  "lastUpdated": "2026-11-01T08:39:40.823Z"
+  "lastUpdated": "2026-11-01T16:33:46.820Z"
 }
