@@ -7279,7 +7279,7 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/qualifying.json",
       "limit": "100",
       "offset": "0",
-      "total": "413",
+      "total": "435",
       "RaceTable": {
         "season": "2026",
         "Races": [
@@ -9630,14 +9630,14 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/driverstandings.json",
       "limit": "30",
       "offset": "0",
-      "total": "24",
+      "total": "25",
       "StandingsTable": {
         "season": "2026",
-        "round": "19",
+        "round": "20",
         "StandingsLists": [
           {
             "season": "2026",
-            "round": "19",
+            "round": "20",
             "DriverStandings": [
               {
                 "position": "1",
@@ -10220,6 +10220,25 @@
                     "nationality": "American"
                   }
                 ]
+              },
+              {
+                "position": "25",
+                "positionText": "25",
+                "points": "0",
+                "wins": "0",
+                "Driver": {
+                  "driverId": "rafael_camara",
+                  "givenName": "Rafael",
+                  "familyName": "Camara"
+                },
+                "Constructors": [
+                  {
+                    "constructorId": "haas",
+                    "url": "https://en.wikipedia.org/wiki/Haas_F1_Team",
+                    "name": "Haas F1 Team",
+                    "nationality": "American"
+                  }
+                ]
               }
             ]
           }
@@ -10237,11 +10256,11 @@
       "total": "11",
       "StandingsTable": {
         "season": "2026",
-        "round": "19",
+        "round": "20",
         "StandingsLists": [
           {
             "season": "2026",
-            "round": "19",
+            "round": "20",
             "ConstructorStandings": [
               {
                 "position": "1",
@@ -10381,5 +10400,5 @@
       }
     }
   },
-  "lastUpdated": "2026-11-07T21:25:14.855Z"
+  "lastUpdated": "2026-11-08T01:03:03.927Z"
 }
