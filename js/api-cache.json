@@ -9738,7 +9738,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "251",
+                "points": "249",
                 "wins": "1",
                 "Driver": {
                   "driverId": "leclerc",
@@ -9834,7 +9834,7 @@
               {
                 "position": "9",
                 "positionText": "9",
-                "points": "87",
+                "points": "89",
                 "wins": "0",
                 "Driver": {
                   "driverId": "lawson",
@@ -10277,7 +10277,7 @@
               {
                 "position": "2",
                 "positionText": "2",
-                "points": "512",
+                "points": "510",
                 "wins": "2",
                 "Constructor": {
                   "constructorId": "ferrari",
@@ -10313,7 +10313,7 @@
               {
                 "position": "5",
                 "positionText": "5",
-                "points": "112",
+                "points": "114",
                 "wins": "0",
                 "Constructor": {
                   "constructorId": "rb",
@@ -10400,5 +10400,5 @@
       }
     }
   },
-  "lastUpdated": "2026-11-08T21:39:09.350Z"
+  "lastUpdated": "2026-11-09T01:24:32.666Z"
 }
