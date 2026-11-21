@@ -7279,7 +7279,7 @@
       "url": "https://api.jolpi.ca/ergast/f1/2026/qualifying.json",
       "limit": "100",
       "offset": "0",
-      "total": "435",
+      "total": "457",
       "RaceTable": {
         "season": "2026",
         "Races": [
@@ -9633,11 +9633,11 @@
       "total": "25",
       "StandingsTable": {
         "season": "2026",
-        "round": "20",
+        "round": "21",
         "StandingsLists": [
           {
             "season": "2026",
-            "round": "20",
+            "round": "21",
             "DriverStandings": [
               {
                 "position": "1",
@@ -10261,11 +10261,11 @@
       "total": "11",
       "StandingsTable": {
         "season": "2026",
-        "round": "20",
+        "round": "21",
         "StandingsLists": [
           {
             "season": "2026",
-            "round": "20",
+            "round": "21",
             "ConstructorStandings": [
               {
                 "position": "1",
@@ -10405,5 +10405,5 @@
       }
     }
   },
-  "lastUpdated": "2026-11-21T05:32:05.610Z"
+  "lastUpdated": "2026-11-21T14:09:47.209Z"
 }
